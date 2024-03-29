@@ -39,3 +39,38 @@ console.log(newArray)
 let index = fruits.indexOf('Mango')
 console.log(index)
 
+console.log('--------------------')
+let nums = [1,2,3,4,5,6,7,8,9,10]
+
+// Iteration using loop
+for (let i=0; i<nums.length; i++){
+    console.log(nums[i]**2)
+}
+
+// Iteration using forEach
+nums.forEach((i) => {
+    console.log(i**2)
+})
+
+// Iteration using map
+let square = nums.map((x) => x**2)
+console.log(square)
+
+// filter function
+let evenNum = []
+for (let i=0; i<nums.length; i++){
+    if (i%2==0){
+        evenNum.push(i)
+    }
+}
+console.log(evenNum)
+
+let even = nums.filter((x) => x%2==0)
+console.log(even)
+
+let odd = nums.filter((x) => x%2!=0)
+console.log(odd)
+
+let color = ['Red', 'Green', 'Blue', 'Yellow', 'Pink', 'Black', 'White', 'Orange', 'Purple', 'Brown']
+let newColor = color.filter((x) => x.length>4)
+console.log(newColor)
