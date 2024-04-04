@@ -1,8 +1,9 @@
 import React from 'react'
 import {useFormik} from 'formik'
-// import * as Yup from 'yup'
+import * as Yup from 'yup'
+import {enqueueSnackbar} from 'notistack'
 
-const SignupSchema = Yup.object.shape({
+const SignupSchema = Yup.object().shape({
   name: Yup.string()
   .required('Name is required')
   .min(3, 'Name must be at least 3 characters')
@@ -26,7 +27,9 @@ const Signup = () => {
     },
     onSubmit: (values, {resetForm}) =>{
       console.log(values)
+      enqueueSnackbar('Signup successfully', {variant: 'success'})
       resetForm()
+
     },
     validationSchema: SignupSchema
   })
