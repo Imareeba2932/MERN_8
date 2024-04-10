@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const port = 5000;
+const cors = require('cors');
 
 const userRouter = require('./Routers/User');
+
+app.use(cors({
+    origin: ['http://localhost:5174']
+}))
 
 // middleware
 app.use(express.json());
