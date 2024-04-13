@@ -7,6 +7,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import EventHandling from './components/EventHandling'
 import {SnackbarProvider} from 'notistack'
+import ManageUsers from './components/ManageUsers'
 const App = () => {
   return (
     <div>
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/Signup' element={<Signup />} />
         <Route path='/Login' element={<Login />} />
         <Route path='/EventHandling' element={<EventHandling />} />
+        <Route path='/ManageUsers' element={<ManageUsers />} />
       </Routes>
       </BrowserRouter>
       </SnackbarProvider>
