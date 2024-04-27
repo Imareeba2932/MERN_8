@@ -1,10 +1,10 @@
 import React,{useState, useEffect} from 'react'
 
-const ManageUsers = () => {
+const ManageProduct = () => {
     const [Data, setData] = useState([])
 
     const fetchUserData = async () => {
-        const res = await fetch('http://localhost:5000/user/getall')
+        const res = await fetch('http://localhost:5000/product/getall')
         console.log(res.status)
         if (res.status === 200){
             const data = await res.json();
@@ -18,7 +18,7 @@ const ManageUsers = () => {
 
     const deleteProduct = async (id) => {
         console.log(id);
-        const res = await fetch("http://localhost:3000/user/delete/" + id, {
+        const res = await fetch("http://localhost:3000/product/delete/" + id, {
             method: "DELETE",
         });
         if (res.status === 200) {
@@ -26,16 +26,18 @@ const ManageUsers = () => {
         }
     }
 
-    const displayUser = () =>{
-        return Data.map((user) => (
+    const displayProduct = () =>{
+        return Data.map((obj) => (
             <tr>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
+                <td>{obj.pname}</td>
+                <td>{obj.pprice}</td>
+                <td>{obj.pcategory}</td>
+                <td>{obj.pdescription}</td>
                 <td>
-                    <button onClick = {() => { deleteProduct(user._id)}} className="btn btn-danger">Delete</button>
+                    <button className="btn btn-danger">Delete</button>
                 </td>
                 <td>
-                    <button onClick = {() => { deleteProduct(user._id)}} className="btn btn-danger">Update</button>
+                    <button className="btn btn-danger">Update</button>
                 </td>
             </tr>
         ))
@@ -53,13 +55,15 @@ const ManageUsers = () => {
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Email</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Description</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {displayUser()}
+                    {displayProduct()}
                 </tbody>
             </table>
         </div>
@@ -67,4 +71,4 @@ const ManageUsers = () => {
   )
 }
 
-export default ManageUsers
+export default ManageProduct
